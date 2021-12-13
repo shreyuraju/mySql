@@ -3,3 +3,45 @@ create table director(dir_id int primary key, dir_name varchar(20),dir_phone big
 create table movies(mov_id int primary key, movie_title varchar(20), mov_year int, mov_lang varchar(20), dir_id int, foreign key(dir_id) references director(dir_id) on delete cascade on update cascade);
 create table movie_cast(act_id int, mov_id int,role varchar(20), foreign key(act_id) references actor(act_id) on delete cascade on update cascade,foreign key(mov_id) references actor(mov_id) on delete cascade on update cascade);
 create table rating(mov_id int,rev_stars int,foreign key(mov_id) references movies(mov_id) on delete cascade on update cascade);
+insert into actor values(10, 'Shivarj kumar','M');
++--------+------------------+------------+
+| act_id | act_name         | act_gender |
++--------+------------------+------------+
+|     10 | Shivarj kumar    | M          |
+|     11 | kicha sudeepa    | M          |
+|     12 | yash             | M          |
+|     13 | ashika ranganath | F          |
+|     14 | PRABHAS          | M          |
++--------+------------------+------------+
+insert into director values(100,'A HARSHA',8967453210);
++--------+----------------+------------+
+| dir_id | dir_name       | dir_phone  |
++--------+----------------+------------+
+|    100 | A HARSHA       | 8967453210 |
+|    101 | NANDHA KISHORE | 9807612354 |
+|    102 | PRASHANTH NEEL | 7890126543 |
+|    103 | RAJMOULI       | 6890126543 |
+|    104 | TRIVIKRAM      | 6376126543 |
++--------+----------------+------------+
+insert into movies values(1,'BAJARANJI 2',2020,'KANNADA',100);
++--------+------------------+----------+----------+--------+
+| mov_id | movie_title      | mov_year | mov_lang | dir_id |
++--------+------------------+----------+----------+--------+
+|      1 | BAJARANJI 2      |     2020 | KANNADA  |    100 |
+|      2 | RANNA            |     2014 | KANNADA  |    101 |
+|      3 | KGF CHAPTER 1    |     2018 | KANNADA  |    102 |
+|      4 | AVATHARA PURUSHA |     2021 | KANNADA  |    101 |
+|      5 | BAHUBALI         |     2016 | TELUGU   |    103 |
++--------+------------------+----------+----------+--------+
+insert into movie_cast values(10,1,'HERO');
++--------+--------+---------+
+| act_id | mov_id | role    |
++--------+--------+---------+
+|     10 |      1 | HERO    |
+|     11 |      2 | HERO    |
+|     12 |      3 | HERO    |
+|     13 |      4 | HEROINE |
+|     14 |      5 | HERO    |
++--------+--------+---------+
+insert into rating values(1,4),(2,4),(3,5),(4,3),(5,5);
+insert into rating values(1,4),(2,4),(3,5),(4,3),(5,5);
