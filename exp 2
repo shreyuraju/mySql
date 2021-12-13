@@ -11,3 +11,6 @@ insert into customer values(1000,'AVINASH','BANGALORE',400,10),(2000,'KUMAR','UD
 insert into orders values(551,5000,'2020-01-04',1000,10),(552,2500,'2020-02-05',2000,20),(553,500,'2020-03-03',1000,40),(554,1500,'2020-04-02',4000,30),(555,2000,'2020-06-03',2000,10);
 
 select count(*) from customer where grade>(select avg(grade) from customer where city='BANGALORE');
+
+create view view1 as select salesman_id from customer where customer_id = (select customer_id from orde
+rs group by customer_id order by sum(purchase_amt) desc limit 1);
