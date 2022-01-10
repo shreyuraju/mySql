@@ -144,6 +144,43 @@ mysql> select * from iamarks;
 | 1B115CS105 | 18CS43  |    6 |    32 |    33 |    31 |      32 |
 +------------+---------+------+-------+-------+-------+---------+
 
+mysql> update iamarks set test1=17,test2=16,test3=19,finalia='NULL' where usn='1B115CS100';
+ERROR 1366 (HY000): Incorrect integer value: 'NULL' for column 'finalia' at row 1
+mysql> update iamarks set test1=17,test2=16,test3=19,finalia=NULL where usn='1B115CS100';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update iamarks set test1=16,test2=13,test3=14,finalia=NULL where usn='1B115CS101';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update iamarks set test1=18,test2=16,test3=20,finalia=NULL where usn='1B115CS102';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update iamarks set test1=16,test2=13,test3=14,finalia=NULL where usn='1B115CS103';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update iamarks set test1=12,test2=13,test3=13,finalia=NULL where usn='1B115CS104';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update iamarks set test1=18,test2=20,test3=20,finalia=NULL where usn='1B115CS105';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from iamarks;
++------------+---------+------+-------+-------+-------+---------+
+| usn        | subcode | ssid | test1 | test2 | test3 | finalia |
++------------+---------+------+-------+-------+-------+---------+
+| 1B115CS100 | 18CS81  |    3 |    17 |    16 |    19 |    NULL |
+| 1B115CS101 | 18CS82  |    2 |    16 |    13 |    14 |    NULL |
+| 1B115CS102 | 18CS42  |    6 |    18 |    16 |    20 |    NULL |
+| 1B115CS103 | 18CS41  |    5 |    16 |    13 |    14 |    NULL |
+| 1B115CS104 | 18CS83  |    1 |    12 |    13 |    13 |    NULL |
+| 1B115CS105 | 18CS43  |    6 |    18 |    20 |    20 |    NULL |
++------------+---------+------+-------+-------+-------+---------+
 
 
 query 1 
