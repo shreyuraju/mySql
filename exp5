@@ -2,5 +2,65 @@
 
 2 create table department(dno int primary key, dname varchar(20), mgrssn int, mgr_start_date date, foreign key(mgrssn) references employee(ssn) on delete cascade on update cascade);
 
+mysql> desc department;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| dno            | int(11)     | NO   | PRI | NULL    |       |
+| dname          | varchar(20) | YES  |     | NULL    |       |
+| mgrssn         | int(11)     | YES  | MUL | NULL    |       |
+| mgr_start_date | date        | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+
+
 -> alter table employee add dno int;
 -> alter table employee add foreign key(dno) references department(dno) on delete cascade on update cascade;
+
+mysql> desc employee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| ssn       | int(11)     | NO   | PRI | NULL    |       |
+| fname     | varchar(20) | YES  |     | NULL    |       |
+| lname     | varchar(20) | YES  |     | NULL    |       |
+| address   | varchar(20) | YES  |     | NULL    |       |
+| sex       | varchar(20) | YES  |     | NULL    |       |
+| salary    | int(11)     | YES  |     | NULL    |       |
+| super_ssn | int(11)     | YES  | MUL | NULL    |       |
+| dno       | int(11)     | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+
+create table dlocation(dno int, dloc varchar(20), foreign key(dno) references department(dno) on delete cascade on update cascade);
+
+mysql> desc dlocation;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| dno   | int(11)     | YES  | MUL | NULL    |       |
+| dloc  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+
+
+create table project(pno int primary key, pname varchar(20), plocation varchar(20), dno int, foreign key(dno) references department(dno) on delete cascade on update cascade);
+
+mysql> desc project;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| pno       | int(11)     | NO   | PRI | NULL    |       |
+| pname     | varchar(20) | YES  |     | NULL    |       |
+| plocation | varchar(20) | YES  |     | NULL    |       |
+| dno       | int(11)     | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+create table works_on(ssn int, pno int,foreign key(ssn) references employee(ssn) on delete cascade on update cascade, foreign key(pno) references project(pno) on delete cascade on update cascade);
+
+mysql> desc works_on;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| ssn   | int(11) | YES  | MUL | NULL    |       |
+| pno   | int(11) | YES  | MUL | NULL    |       |
++-------+---------+------+-----+---------+-------+
+
