@@ -162,7 +162,7 @@ mysql> update iamarks set test1=16,test2=13,test3=14,finalia=NULL where usn='1B1
 Query OK, 1 row affected (0.03 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-mysql> update iamarks set test1=12,test2=13,test3=13,finalia=NULL where usn='1B115CS104';
+mysql> update iamarks set test1=11,test2=11,test3=10,finalia=NULL where usn='1B115CS104';
 Query OK, 1 row affected (0.03 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
@@ -178,7 +178,7 @@ mysql> select * from iamarks;
 | 1B115CS101 | 18CS82  |    2 |    16 |    13 |    14 |    NULL |
 | 1B115CS102 | 18CS42  |    6 |    18 |    16 |    20 |    NULL |
 | 1B115CS103 | 18CS41  |    5 |    16 |    13 |    14 |    NULL |
-| 1B115CS104 | 18CS83  |    1 |    12 |    13 |    13 |    NULL |
+| 1B115CS104 | 18CS83  |    1 |    11 |    11 |    10 |    NULL |
 | 1B115CS105 | 18CS43  |    6 |    18 |    20 |    20 |    NULL |
 +------------+---------+------+-------+-------+-------+---------+
 
@@ -214,5 +214,22 @@ mysql> select * from view1;
 +------------+-------+
 | 1B115CS101 |    31 |
 +------------+-------+
+
+query 4:
+mysql> update iamarks set finalia=greatest(test1+test2,test2+test3,test1+test3)/2;
+Query OK, 6 rows affected (0.03 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> select * from iamarks;
++------------+---------+------+-------+-------+-------+---------+
+| usn        | subcode | ssid | test1 | test2 | test3 | finalia |
++------------+---------+------+-------+-------+-------+---------+
+| 1B115CS100 | 18CS81  |    3 |    17 |    16 |    19 |      18 |
+| 1B115CS101 | 18CS82  |    2 |    16 |    13 |    14 |      15 |
+| 1B115CS102 | 18CS42  |    6 |    18 |    16 |    20 |      19 |
+| 1B115CS103 | 18CS41  |    5 |    16 |    13 |    14 |      15 |
+| 1B115CS104 | 18CS83  |    1 |    11 |    11 |    10 |      11 |
+| 1B115CS105 | 18CS43  |    6 |    18 |    20 |    20 |      20 |
++------------+---------+------+-------+-------+-------+---------+
 
 
