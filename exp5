@@ -1,0 +1,6 @@
+1 create table employee(ssn int primary key, fname varchar(20), lname varchar(20), address varchar(20), sex varchar(20), salary int, super_ssn int, foreign key(super_ssn) references employee(ssn) on update cascade on delete cascade);
+
+2 create table department(dno int primary key, dname varchar(20), mgrssn int, mgr_start_date date, foreign key(mgrssn) references employee(ssn) on delete cascade on update cascade);
+
+-> alter table employee add dno int;
+-> alter table employee add foreign key(dno) references department(dno) on delete cascade on update cascade;
