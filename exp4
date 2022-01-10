@@ -1,0 +1,181 @@
+
+insert into student values('1B115CS105','GANAVI','KOPPA',9876453210,'F');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from student;
++------------+-----------+-----------+-------------+--------+
+| usn        | sname     | address   | phone       | gender |
++------------+-----------+-----------+-------------+--------+
+| 1B115CS100 | ADARSH    | SHIVMOGGA |  9876543210 | M      |
+| 1B115CS101 | ANOOP     | DHARWAD   |  7865491230 | M      |
+| 1B115CS102 | AISHWARYA | HASSAN    |  8796501234 | F      |
+| 1B115CS103 | BHAVANI   | SHIVMOGGA | 87965432109 | F      |
+| 1B115CS104 | DAIWIK    | BENGALURU |  8796543120 | M      |
+| 1B115CS105 | GANAVI    | KOPPA     |  9876453210 | F      |
++------------+-----------+-----------+-------------+--------+
+
+mysql> insert into semsec values(1,8,'B');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into semsec values(2,8,'C');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into semsec values(3,8,'A');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into semsec values(4,4,'A');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into semsec values(5,4,'B');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into semsec values(6,4,'C');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into class values('1B11CS100,2);
+    '> insert into class values('1B11CS100',2);
+    '> ;
+    '> ^C
+mysql> insert into class values('1B11CS100',2);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`5CS3_B2_student`.`class`, CONSTRAINT `class_ibfk_1` FOREIGN KEY (`usn`) REFERENCES `student` (`usn`) ON DELETE CASCADE ON UPDATE CASCADE)
+mysql> select * from class;
+Empty set (0.00 sec)
+
+mysql> select * from semsec;
++------+------+------+
+| ssid | sem  | sec  |
++------+------+------+
+|    1 |    8 | B    |
+|    2 |    8 | C    |
+|    3 |    8 | A    |
+|    4 |    4 | A    |
+|    5 |    4 | B    |
+|    6 |    4 | C    |
++------+------+------+
+
+
+mysql> insert into class values('1B115CS100',2);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into class values('1B115CS101',1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into class values('1B115CS102',6);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into class values('1B115CS103',5);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into class values('1B115CS104',3);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into class values('1B115CS105',6);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from class;
++------------+------+
+| usn        | ssid |
++------------+------+
+| 1B115CS100 |    2 |
+| 1B115CS101 |    1 |
+| 1B115CS102 |    6 |
+| 1B115CS103 |    5 |
+| 1B115CS104 |    3 |
+| 1B115CS105 |    6 |
++------------+------+
+
+mysql> insert into course values('18CS81','CC',8,4);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into course values('18CS82','ADE',8,2);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into course values('18CS83','DS',8,2);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into course values('18CS41','M4',4,4);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into course values('18CS42','DAA',4,4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into course values('18CS43','DS',4,2);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from course;
++---------+------+------+---------+
+| subcode | tile | sem  | credits |
++---------+------+------+---------+
+| 18CS41  | M4   |    4 |       4 |
+| 18CS42  | DAA  |    4 |       4 |
+| 18CS43  | DS   |    4 |       2 |
+| 18CS81  | CC   |    8 |       4 |
+| 18CS82  | ADE  |    8 |       2 |
+| 18CS83  | DS   |    8 |       2 |
++---------+------+------+---------+
+
+mysql> insert into iamarks values('1B115CS100','18CS81',3,41,40,43,41);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into iamarks values('1B115CS101','18CS82',2,31,32,29,30);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into iamarks values('1B115CS102','18CS42',6,44,46,45,45);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into iamarks values('1B115CS103','18CS41',5,41,38,39,39);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into iamarks values('1B115CS104','18CS83',1,30,38,37,35);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into iamarks values('1B115CS105','18CS43',6,32,33,31,32);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from iamarks;
++------------+---------+------+-------+-------+-------+---------+
+| usn        | subcode | ssid | test1 | test2 | test3 | finalia |
++------------+---------+------+-------+-------+-------+---------+
+| 1B115CS100 | 18CS81  |    3 |    41 |    40 |    43 |      41 |
+| 1B115CS101 | 18CS82  |    2 |    31 |    32 |    29 |      30 |
+| 1B115CS102 | 18CS42  |    6 |    44 |    46 |    45 |      45 |
+| 1B115CS103 | 18CS41  |    5 |    41 |    38 |    39 |      39 |
+| 1B115CS104 | 18CS83  |    1 |    30 |    38 |    37 |      35 |
+| 1B115CS105 | 18CS43  |    6 |    32 |    33 |    31 |      32 |
++------------+---------+------+-------+-------+-------+---------+
+
+
+
+query 1 
+select s.usn,sname,address,phone,gender from student s, semsec sc,class c where s.usn=c.usn and sc.ssid=c.ssid and sc.sec='C' and sc.sem=4;
++------------+-----------+---------+------------+--------+
+| usn        | sname     | address | phone      | gender |
++------------+-----------+---------+------------+--------+
+| 1B115CS102 | AISHWARYA | HASSAN  | 8796501234 | F      |
+| 1B115CS105 | GANAVI    | KOPPA   | 9876453210 | F      |
++------------+-----------+---------+------------+--------+
+
+query 2
+select sem,sec,gender,count(gender) from student s, semsec sc,class c where s.usn=c.usn and sc.ssid=c.ssid group by sem,sec,gender order by sec;
++------+------+--------+---------------+
+| sem  | sec  | gender | count(gender) |
++------+------+--------+---------------+
+|    8 | A    | M      |             1 |
+|    8 | B    | M      |             1 |
+|    4 | B    | F      |             1 |
+|    8 | C    | M      |             1 |
+|    4 | C    | F      |             2 |
++------+------+--------+---------------+
+
+query 3
+reate view view1 as select usn, test1 from iamarks where usn='1B115CS101';
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from view1;
++------------+-------+
+| usn        | test1 |
++------------+-------+
+| 1B115CS101 |    31 |
++------------+-------+
+
+
